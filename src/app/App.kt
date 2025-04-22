@@ -5,7 +5,7 @@ class Wolf {
     val food = "Meat"
 
     fun eat() {
-        println("The wolf is eating $food")
+        println("The wolf is eating $food Моя еда ема е")
     }
 }
 
