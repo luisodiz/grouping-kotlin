@@ -51,6 +51,7 @@ fun main() {
 
     val mapSnapshot = mutableUsersMap.toMap() // создат map, которую нельзя изменять
     val mapSnapshotList = mutableUsersMap.toList() // list, который нельзя изменять
+    println("mapSnapshotList: $mapSnapshotList")
 
     // entries - доступ к ключ-значению. Если обычный Map который нельзя изменять, то вернет Set, для MutableMap вернет MutableSet
     val mapEntries = mutableUsersMap.entries // Вернет MutableSet<MutableMap.MutableEntry<String, User>>
@@ -58,6 +59,23 @@ fun main() {
 
     val mapEntries2 = mapSnapshot.entries // Вернет обычный Set<Map.Entry<String, User>>
     println(mapEntries2)
+
+    val mutableMapKeys = mutableUsersMap.keys
+    println("mutableMapKeys MutableSet<String>: $mutableMapKeys")
+
+    val mutableMapValues = mutableUsersMap.values
+    println("mutableMapValues MutableCollection<User>: $mutableMapValues")
+
+    val mapKeys = usersMap.keys
+    println("mapKeys это Set<String>: $mapKeys")
+
+    val mapValues = usersMap.values
+    println("mapValues Collection<User>: $mapValues")
+
+    // Проверка на дубликаты в Map
+    if (usersMap.size > usersMap.values.toSet().size) {
+        println("usersMap имеет дубликаты значений")
+    }
 }
 
 /*
