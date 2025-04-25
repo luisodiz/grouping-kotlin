@@ -8,7 +8,13 @@ class Dog(name: String) : Pet(name)
 
 class Fish(name: String) : Pet(name)
 
-class Contest<T : Pet> {
+class Vet<T: Pet> {
+    fun treat(t: T) {
+        println("Лечим $t")
+    }
+}
+
+class Contest<T : Pet>(var vet: Vet<T>) {
     val scores: MutableMap<T, Int> = mutableMapOf()
 
     fun addScore(t: T, score: Int = 0) {
@@ -24,6 +30,31 @@ class Contest<T : Pet> {
         }
 
         return winners
+    }
+}
+
+interface Retailer<out T> {
+    fun sell(): T
+}
+
+class CatRetailer : Retailer<Cat> {
+    override fun sell(): Cat {
+        println("Кот продан")
+        return Cat("")
+    }
+}
+
+class DogRetailer : Retailer<Dog> {
+    override fun sell(): Dog {
+        println("Собака продана")
+        return Dog("")
+    }
+}
+
+class FishRetailer : Retailer<Fish> {
+    override fun sell(): Fish {
+        println("Рыба продана")
+        return Fish("")
     }
 }
 
@@ -44,4 +75,10 @@ fun main() {
     petContest.addScore(fishFinny, 56)
     val topPet = petContest.getWinners().first()
     println("Pet contest winner is ${topPet.name}")*/
+
+    val dogRetailer: Retailer<Dog> = DogRetailer()
+    val catRetailer: Retailer<Cat> = CatRetailer()
+    val petRetailer: Retailer<Pet> = CatRetailer()
+
+    petRetailer.sell()
 }

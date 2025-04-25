@@ -54,5 +54,5 @@ fun main() {
     val dogRetailer2: Retailer<Dog> = DogRetailer()
     val catRetailer2: Retailer<Cat> = CatRetailer()
 
-//    val petRetailer: Retailer<Pet> = CatRetailer() - ошибка, хотя Cat реализует Pet
+//    val petRetailer: Retailer<Pet> = CatRetailer() - ошибка, хотя Cat реализует Pet. Для этого надо использовать out в дженерике
 }
