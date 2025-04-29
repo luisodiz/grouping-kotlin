@@ -3,9 +3,9 @@ package hof.ex
 data class Pizza(val name: String, val pricePerSlice: Double, val quantity: Int)
 
 fun main() {
-    val ints = listOf(1, 2, 3, 4, 5)
+    val ints = listOf(1, 2, 3)
 
-    val pizzas = listOf(
+    /*val pizzas = listOf(
         Pizza("Sunny Chicken", 4.5, 4),
         Pizza("Goat and Nut", 4.0, 1),
         Pizza("Tropical", 3.0, 2),
@@ -24,6 +24,6 @@ fun main() {
     val highQuantity = pizzas.maxBy { p: Pizza -> p.quantity }
     val highQuantity2 = pizzas.maxBy({ it.quantity })
 //    val totalPrice = pizzas.sumBy { it.pricePerSlice * it.quantity } // Ошибка
-    var totalPrice2 = pizzas.sumByDouble { it.pricePerSlice * it.quantity }
+    var totalPrice2 = pizzas.sumByDouble { it.pricePerSlice * it.quantity }*/
 
 }

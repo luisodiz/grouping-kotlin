@@ -20,4 +20,50 @@ fun main() {
     println("sumQuantity: $sumQuantity")
     val totalPrice = groceries.sumByDouble({ it.quantity * it.unitPrice })
     println("totalPrice: $totalPrice")
+
+    // По цене больше 3
+    val unitPriceOver3: List<Grocery> = groceries.filter { it.unitPrice > 3 }
+    // количество != 2
+    val filteredGroceryLessThenTwo: List<Grocery> = groceries.filterNot { it.quantity != 2 }
+
+    /*    val ints = listOf(1, 2, 3, 4)
+        val doubleInts: List<Int> = ints.map { it * 2 }
+
+        val groceryNames = groceries.map { it.name }
+
+        val newPrices: List<Double> = groceries.filter { it.unitPrice > 3.0 }.map { it.unitPrice * 2 }
+        println(newPrices)*/
+
+    // Можно перебирать через цикл for, а можно через forEach
+    /*for (item in groceries) {
+        println(item.name)
+    }*/
+
+//    groceries.forEach { println(it.name) }
+
+    // forEach удобен в цепочке вызовов
+    groceries.filter { it.unitPrice > 3.0 }.forEach { println(it.name) }
+
+    /*    var itemNames = ""
+        groceries.forEach { itemNames += "${it.name} " }
+        println("itemNames: $itemNames")*/
+
+//    Группировка через groupBy
+//    val groupByCategory: Map<String, List<Grocery>> = groceries.groupBy { it.category }
+//    println(groupByCategory)
+
+    // groupBy возвращает Map
+    groceries.groupBy { it.category }.forEach { entry ->
+        println(entry.key) // ключом будет строка в данном случае
+        entry.value.forEach { println("    ${it.name}") } // Так как каждое значение это List<Grocery>, то можно пройтись forEach
+    }
+
+    // Функция fold
+    val ints = listOf(1, 2, 3)
+    val sumOfInts: Int = ints.fold(0) { runningSum, item -> runningSum + item }
+
+    // умножение всех элементов меж собой
+    ints.fold(1) { runningProduct, item -> runningProduct * item }
+    groceries.fold("") { string, item -> string + " ${item.name}" }
+    groceries.fold(50.0) { change, item -> change - item.unitPrice * item.quantity }
 }
